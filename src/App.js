@@ -1,5 +1,7 @@
-/* components */
-import TaskList from './components/container/TaskList';
+// libraries
+import React from 'react';
+// components
+import TaskList from './components/containers/TaskList/TaskList';
 
 function App() {
   return (
