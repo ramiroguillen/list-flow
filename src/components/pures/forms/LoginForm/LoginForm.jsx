@@ -1,21 +1,20 @@
 // libraries
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-// validation schema
-const loginSchema = Yup.object().shape(
-    {
-        email: Yup.string()
-            .email('Invalid email format')
-            .required('Email is required'),
-        password: Yup.string()
-            .required('Password is required')
-            .min(8, 'Password must have at least 8 characters')
-    }
-)
-
 const LoginForm = () => {
+
+    // validation schema
+    const loginSchema = Yup.object().shape(
+        {
+            email: Yup.string()
+                .email('Invalid email format')
+                .required('Email is required'),
+            password: Yup.string()
+                .required('Password is required')
+        }
+    )
 
     // initial values for credentials
     const initialCredentials = {
@@ -47,7 +46,7 @@ const LoginForm = () => {
                         }
                         <label htmlFor='password'>Password: </label>
                         <Field id='password' name='password' type='password' />
-                        {   // will show current errors on the field
+                        {   
                             errors.password && touched.password &&
                             <ErrorMessage name='password' component='div' />
                         }
