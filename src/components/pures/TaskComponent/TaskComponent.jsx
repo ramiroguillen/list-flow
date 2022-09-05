@@ -34,35 +34,19 @@ const TaskComponent = ({ task, complete, remove }) => {
     // returns an icon depending on task's completion level
     function taskIcon() {
         if (task.completed) {
-            return (
-                <i
-                    onClick={() => complete(task.id)}
-                    className='bi-toggle-on task-icon'
-                    style={{ color: 'green' }}
-                ></i>
-            );
+            return (<i onClick={() => complete(task.id)} className='bi-toggle-on task-icon' style={{ color: 'green' }}></i>);
         } else {
-            return (
-                <i
-                    onClick={() => complete(task.id)}
-                    className='bi-toggle-off task-icon'
-                    style={{ color: 'grey' }}
-                ></i>
-            );
+            return (<i onClick={() => complete(task.id)} className='bi-toggle-off task-icon' style={{ color: 'grey' }}></i>);
         }
     }
 
     return (
         <tr className='fw-normal'>
-            <th><span className='ms-2'>{task.name}</span></th>
-            <td className='align-middle'><span>{task.description}</span></td>
+            <th><span className={'ms-2' && task.completed && 'task-completed'}>{task.name}</span></th>
+            <td className={'align-middle' && task.completed && 'task-completed'}><span>{task.description}</span></td>
             <td className='align-middle'>{taskLevelBadge()}</td>
             <td className='align-middle'>{taskIcon()}</td>
-            <td><i
-                onClick={() => remove(task.id)}
-                className='bi-trash task-icon'
-                style={{ color: 'tomato' }}
-            ></i></td>
+            <td><i onClick={() => remove(task.id)} className='bi-trash task-icon' style={{ color: 'tomato' }}></i></td>
         </tr>
     );
 }
