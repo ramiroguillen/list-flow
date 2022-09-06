@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // components
 import TaskComponent from '../../pures/TaskComponent/TaskComponent';
-import TaskForm from '../../pures/forms/TaskForm/TaskForm';
+import TaskForm from '../pures/forms/TaskForm/TaskForm';
 
 const TaskList = () => {
 

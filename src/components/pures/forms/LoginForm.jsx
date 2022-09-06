@@ -31,7 +31,6 @@ const LoginForm = () => {
                 onSubmit={
                     async (values) => {
                         await new Promise(res => setTimeout(res, 1000));
-                        alert(JSON.stringify(values, null, 2));
                         localStorage.setItem('credentials', values);
                     }
                 }
