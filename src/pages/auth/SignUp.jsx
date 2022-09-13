@@ -3,9 +3,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 // models
-import { ROLES } from '../../../models/roles.enum';
+import { ROLES } from '../../models/roles.enum';
 
-const RegisterForm = () => {
+const Register = () => {
 
     // validation schema   
     const registerSchema = Yup.object().shape(
@@ -39,7 +39,6 @@ const RegisterForm = () => {
         role: ROLES.USER,
         tasks: [],
     }
-
     return (
         <div>
             <h2>Register</h2>
@@ -88,4 +87,4 @@ const RegisterForm = () => {
     );
 }
 
-export default RegisterForm;
+export default Register;

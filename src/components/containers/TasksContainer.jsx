@@ -1,10 +1,10 @@
 // libraries
 import React, { useState, useEffect } from 'react';
 // components
-import TaskComponent from '../../pures/TaskComponent/TaskComponent';
-import TaskForm from '../pures/forms/TaskForm/TaskForm';
+import TaskForm from '../pures/forms/TaskForm';
+import TasksList from './TasksList';
 
-const TaskList = () => {
+const TasksContainer = () => {
 
   // states
   const [tasks, setTasks] = useState([]);
@@ -42,53 +42,23 @@ const TaskList = () => {
     setTasks(tempTasks);
   }
 
-  const Table = () => {
-    return (
-      <table className='w-100'>
-        <thead>
-          <tr>
-            <th scope='col'>Task</th>
-            <th scope='col'>Description</th>
-            <th scope='col'>Priority</th>
-            <th scope='col'>Completed</th>
-            <th scope='col'></th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map((task) => <TaskComponent task={task} key={task.id} complete={completeTask} remove={removeTask} />)}
-        </tbody>
-      </table>
-    )
-  }
-
-  let taskTable;
-
-  if (tasks.length > 0) {
-    taskTable = <Table />
-  } else {
-    taskTable = <span>There are no tasks to show</span>
-  }
-
   return (
-    <section id="tasks">
-      <div className='col-12'>
+    <main id="tasks" className='d-flex justify-content-center'>
+      <div className='col-md-6 mt-3'>
         <div className='card'>
           <div className='card-header p-3'>
             <h5>Your tasks:</h5>
           </div>
-          <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '400px' }}>
-            {loading ?
-              <span>Loading...</span>
-              : taskTable
-            }
+          <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '244px' }}>
+            <TasksList completeTask={completeTask} removeTask={removeTask} loading={loading} tasks={tasks} />
           </div>
           <div className='card-footer'>
             <TaskForm add={addTask} />
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
-export default TaskList;
+export default TasksContainer;

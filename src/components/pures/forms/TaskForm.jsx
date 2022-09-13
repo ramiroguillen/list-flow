@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 // models
-import { LEVELS } from '../../../../models/levels.enum';
-import { Task } from '../../../../models/task.class';
+import { LEVELS } from '../../../models/levels.enum';
+import { Task } from '../../../models/task.class';
 
 const TaskForm = ({ add }) => {
 
@@ -53,18 +53,20 @@ const TaskForm = ({ add }) => {
                             errors.description && touched.description &&
                             <ErrorMessage name='description' component='div' />
                         }
-                        <label htmlFor='level' className='form-label'>Priority:</label>
+                        <label htmlFor='level' className='form-label ms-1 mt-1'>Priority:</label>
                         <Field as='select' name='level' className='form-select'>
                             <option value={LEVELS.NORMAL}>Normal</option>
                             <option value={LEVELS.URGENT}>Urgent</option>
                             <option value={LEVELS.BLOCKING}>Blocking</option>
                         </Field>
-                        <button type='submit' className='btn btn-success w-100'>ADD</button>
+                        <div className='d-flex justify-content-end'>
+                            <button type='submit' className='btn btn-success mt-3'>ADD</button>
+                        </div>
                     </div>
                 </Form>
             )}
         </Formik>
-    )
+    );
 }
 
 TaskForm.propTypes = {

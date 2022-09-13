@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // models
 import { Task } from '../../models/task.class';
 import { LEVELS } from '../../models/levels.enum';
+// icons
+import { BsToggleOff, BsToggleOn, BsTrash } from 'react-icons/bs';
 
 const TaskComponent = ({ task, complete, remove }) => {
 
@@ -32,19 +34,23 @@ const TaskComponent = ({ task, complete, remove }) => {
     // returns an icon depending on task's completion level
     function taskIcon() {
         if (task.completed) {
-            return (<i onClick={() => complete(task.id)} className='bi-toggle-on task-icon' style={{ color: 'green' }}></i>);
+            return (<BsToggleOn onClick={() => complete(task.id)} style={{ color: '#198754' }} />);
         } else {
-            return (<i onClick={() => complete(task.id)} className='bi-toggle-off task-icon' style={{ color: 'grey' }}></i>);
+            return (<BsToggleOff onClick={() => complete(task.id)} style={{ color: 'grey' }} />);
         }
     }
 
     return (
         <tr className='fw-normal'>
-            <th><span className={'ms-2' && task.completed && 'task-completed'}>{task.name}</span></th>
-            <td className={'align-middle' && task.completed && 'task-completed'}><span>{task.description}</span></td>
-            <td className='align-middle'>{taskLevelBadge()}</td>
-            <td className='align-middle'>{taskIcon()}</td>
-            <td><i onClick={() => remove(task.id)} className='bi-trash task-icon' style={{ color: 'tomato' }}></i></td>
+            <th>{task.name}</th>
+            <td className={'align-middle'}><span>{task.description}</span></td>
+            <td>
+                <div className='align-items-center justify-content-center'>
+                    {taskLevelBadge()}
+                </div>
+            </td>
+            <td>{taskIcon()}</td>
+            <td><BsTrash onClick={() => remove(task.id)} style={{ color: '#dc3545' }} /></td>
         </tr>
     );
 }

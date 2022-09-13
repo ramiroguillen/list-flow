@@ -3,7 +3,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const LoginForm = () => {
+const Login = () => {
 
     // validation schema
     const loginSchema = Yup.object().shape(
@@ -24,7 +24,7 @@ const LoginForm = () => {
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Sign In</h2>
             <Formik
                 initialValues={initialCredentials}
                 validationSchema={loginSchema}
@@ -45,7 +45,7 @@ const LoginForm = () => {
                         }
                         <label htmlFor='password'>Password: </label>
                         <Field id='password' name='password' type='password' />
-                        {   
+                        {
                             errors.password && touched.password &&
                             <ErrorMessage name='password' component='div' />
                         }
@@ -58,4 +58,4 @@ const LoginForm = () => {
     );
 }
 
-export default LoginForm;
+export default Login;
