@@ -14,7 +14,7 @@ const Routing = () => {
         <>
             <Navbar />
             <Routes>
-                <Route exact path='/todo-list' element={<Home />} />
+                <Route exact path='/' element={<Home />} />
             </Routes>
             <Footer />
         </>

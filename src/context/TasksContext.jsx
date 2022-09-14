@@ -28,7 +28,9 @@ const TasksProvider = ({ children }) => {
     }
 
     return (
-        <TasksContext.Provider value={{ loading, users, tasks, handleCompleteTask, handleDecompleteTask, handleAddTask, handleRemoveTask }}>
+        <TasksContext.Provider
+            value={{ loading, users, tasks, handleCompleteTask, handleDecompleteTask, handleAddTask, handleRemoveTask }}
+        >
             {children}
         </TasksContext.Provider>
     );
