@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "yup": "^0.32.11"
   },
+  "homepage": "https://ramiroguillen.github.io/todo-list/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
