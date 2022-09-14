@@ -1,46 +1,45 @@
 // libraries
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// models
-import { LEVELS } from '../../../models/levels.enum';
-import { Task } from '../../../models/task.class';
+// context
+import { TasksContext } from '../context/TasksContext';
 
-const TaskForm = ({ add }) => {
+const TaskForm = () => {
+
+    const { handleAddTask } = useContext(TasksContext);
 
     const taskSchema = Yup.object().shape(
         {
             name: Yup.string().required('Task name is required'),
             description: Yup.string().required('Description is required'),
-            level: Yup.string().oneOf([LEVELS.NORMAL, LEVELS.URGENT, LEVELS.BLOCKING]).required('Priority level is required'),
+            level: Yup.string().oneOf(['normal', 'urgent', 'blocking']).required('Priority level is required'),
         }
     )
 
     const initialValues = {
         name: '',
         description: '',
-        level: LEVELS.NORMAL,
+        level: 'normal',
+    }
+
+    const handleSubmit = (values) => {
+        const newTask = {
+            name: values.name,
+            description: values.description,
+            completed: false,
+            level: values.level
+        }
+        handleAddTask(newTask);
     }
 
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={taskSchema}
-            onSubmit={
-                (values) => {
-                    const newTask = new Task(
-                        null,
-                        values.name,
-                        values.description,
-                        false,
-                        values.level
-                    );
-                    add(newTask);
-                }
-            }
+            onSubmit={handleSubmit}
         >
-            {({ values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
+            {({ errors, touched }) => (
                 <Form className='d-flex justify-content-center align-items-center mb-4'>
                     <div className='form-outline flex-fill'>
                         <Field id='name' name='name' type='text' className='form-control' required placeholder='Task name'></Field>
@@ -55,9 +54,9 @@ const TaskForm = ({ add }) => {
                         }
                         <label htmlFor='level' className='form-label ms-1 mt-1'>Priority:</label>
                         <Field as='select' name='level' className='form-select'>
-                            <option value={LEVELS.NORMAL}>Normal</option>
-                            <option value={LEVELS.URGENT}>Urgent</option>
-                            <option value={LEVELS.BLOCKING}>Blocking</option>
+                            <option value='normal'>Normal</option>
+                            <option value='urgent'>Urgent</option>
+                            <option value='blocking'>Blocking</option>
                         </Field>
                         <div className='d-flex justify-content-end'>
                             <button type='submit' className='btn btn-success mt-3'>ADD</button>
@@ -67,10 +66,6 @@ const TaskForm = ({ add }) => {
             )}
         </Formik>
     );
-}
-
-TaskForm.propTypes = {
-    add: PropTypes.func.isRequired,
 }
 
 export default TaskForm;

@@ -1,14 +1,16 @@
 // libraries
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 // components
-import TasksContainer from '../../components/containers/TasksContainer';
+import TasksContainer from '../../components/TasksContainer';
 
 const Home = () => {
 
+    const { isAuthenticated } = useAuth0();
+
     return (
         <>
-            <TasksContainer />
+            {isAuthenticated ? <TasksContainer /> : null}
         </>
     );
 }
