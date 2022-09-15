@@ -1,73 +1,45 @@
-// libraries
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import useAuth from '../hooks/useAuth';
+import { useState } from 'react';
 // hooks
 import useFirestore from '../hooks/useFirestore';
+import useAuth from '../hooks/useAuth';
 
 const TaskForm = () => {
 
     const { addTask } = useFirestore();
     const { user } = useAuth();
 
-    const taskSchema = Yup.object().shape(
-        {
-            name: Yup.string().required('Task name is required'),
-            description: Yup.string().required('Description is required'),
-            level: Yup.string().oneOf(['normal', 'urgent', 'blocking']).required('Priority level is required'),
-        }
-    )
-
     const initialValues = {
         name: '',
         description: '',
+        completed: false,
         level: 'normal',
-        email: ''
+        email: user.email
     }
 
-    const handleSubmit = (values) => {
-        const newTask = {
-            name: values.name,
-            description: values.description,
-            completed: false,
-            level: values.level,
-            user: user.email
-        }
-        addTask(newTask);
+    const [task, setTask] = useState(initialValues);
+
+    const handleChange = ({ target: { name, value } }) => {
+        setTask({ ...task, [name]: value });
+    };
+
+    const handleSubmit = () => {
+        addTask(task);
     }
 
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={taskSchema}
-            onSubmit={handleSubmit}
-        >
-            {({ errors, touched }) => (
-                <Form className='d-flex justify-content-center align-items-center mb-4'>
-                    <div className='form-outline flex-fill'>
-                        <Field id='name' name='name' type='text' className='form-control' required placeholder='Task name'></Field>
-                        {
-                            errors.name && touched.name &&
-                            <ErrorMessage name='name' component='div' />
-                        }
-                        <Field id='description' name='description' type='text' className='form-control' required placeholder='Description'></Field>
-                        {
-                            errors.description && touched.description &&
-                            <ErrorMessage name='description' component='div' />
-                        }
-                        <label htmlFor='level' className='form-label ms-1 mt-1'>Priority:</label>
-                        <Field as='select' name='level' className='form-select'>
-                            <option value='normal'>Normal</option>
-                            <option value='urgent'>Urgent</option>
-                            <option value='blocking'>Blocking</option>
-                        </Field>
-                        <div className='d-flex justify-content-end'>
-                            <button type='submit' className='btn btn-success mt-3'>ADD</button>
-                        </div>
-                    </div>
-                </Form>
-            )}
-        </Formik>
+        <div className='d-flex flex-column mb-4'>
+            <input onChange={handleChange} id='name' name='name' type='text' className='form-control w-100' required placeholder='Task Name' />
+            <input onChange={handleChange} id='description' name='description' type='text' className='form-control' required placeholder='Task Description' />
+            <label htmlFor='level' className='m-1'>Priority Level:</label>
+            <select name='level' className='form-select'>
+                <option value='normal'>Normal</option>
+                <option value='urgent'>Urgent</option>
+                <option value='blocking'>Blocking</option>
+            </select>
+            <div className='d-flex justify-content-end'>
+                <button onClick={handleSubmit} className='btn btn-success mt-3'>ADD TASK</button>
+            </div>
+        </div>
     );
 }
 

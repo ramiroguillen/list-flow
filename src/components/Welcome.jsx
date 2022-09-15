@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { BsKey, BsShieldLock } from 'react-icons/bs';
+// components
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
+// icons
+import { BsKey, BsShieldLock } from 'react-icons/bs';
 
 const Welcome = () => {
 

@@ -1,4 +1,3 @@
-// libraries
 import { useState } from 'react';
 // hooks
 import useAuth from '../hooks/useAuth';

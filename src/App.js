@@ -1,4 +1,3 @@
-// libraries
 import React from 'react';
 // routes
 import Routing from './routes/Routing';

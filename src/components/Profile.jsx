@@ -1,3 +1,4 @@
+// hooks
 import useAuth from "../hooks/useAuth";
 
 const Profile = () => {
