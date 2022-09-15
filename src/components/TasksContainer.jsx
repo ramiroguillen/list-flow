@@ -1,5 +1,3 @@
-// libraries
-import React from 'react';
 // components
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';

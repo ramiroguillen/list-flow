@@ -1,13 +1,11 @@
-// libraries
-import React, { useContext } from 'react';
+// hooks
+import useFirestore from '../hooks/useFirestore';
 // components
 import TaskComponent from './TaskComponent';
-// context
-import { TasksContext } from '../context/TasksContext';
 
 const TasksList = () => {
 
-  const { loading, tasks } = useContext(TasksContext);
+  const { loading, tasks } = useFirestore();
 
   return (
     <table className='w-100'>

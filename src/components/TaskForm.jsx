@@ -1,13 +1,12 @@
 // libraries
-import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// context
-import { TasksContext } from '../context/TasksContext';
+// hooks
+import useFirestore from '../hooks/useFirestore';
 
 const TaskForm = () => {
 
-    const { handleAddTask } = useContext(TasksContext);
+    const { addTask } = useFirestore();
 
     const taskSchema = Yup.object().shape(
         {
@@ -30,7 +29,7 @@ const TaskForm = () => {
             completed: false,
             level: values.level
         }
-        handleAddTask(newTask);
+        addTask(newTask);
     }
 
     return (

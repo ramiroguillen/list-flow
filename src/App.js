@@ -3,13 +3,16 @@ import React from 'react';
 // routes
 import Routing from './routes/Routing';
 // context providers
-import TasksProvider from './context/TasksContext';
+import TasksProvider from './contexts/TasksContext';
+import AuthProvider from './contexts/AuthContext';
 
 function App() {
   return (
-    <TasksProvider>
-      <Routing />
-    </TasksProvider>
+    <AuthProvider>
+      <TasksProvider>
+        <Routing />
+      </TasksProvider>
+    </AuthProvider>
   );
 }
 

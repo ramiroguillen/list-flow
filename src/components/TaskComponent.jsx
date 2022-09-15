@@ -1,13 +1,11 @@
-// libraries
-import React, { useContext } from 'react';
-// context 
-import { TasksContext } from '../context/TasksContext';
+// hooks
+import useFirestore from '../hooks/useFirestore';
 // icons
 import { BsToggleOff, BsToggleOn, BsTrash } from 'react-icons/bs';
 
 const TaskComponent = ({ task }) => {
 
-    const { handleCompleteTask, handleDecompleteTask, handleRemoveTask } = useContext(TasksContext);
+    const { completeTask, decompleteTask, removeTask } = useFirestore();
 
     // returns a badge depending on task's priority
     function taskLevelBadge() {
@@ -26,9 +24,9 @@ const TaskComponent = ({ task }) => {
     // returns an icon depending on task's completion level
     function taskIcon() {
         if (task.completed) {
-            return (<BsToggleOn onClick={() => handleDecompleteTask(task.id)} style={{ color: '#198754' }} />);
+            return (<BsToggleOn onClick={() => completeTask(task.id)} style={{ color: '#198754' }} />);
         } else {
-            return (<BsToggleOff onClick={() => handleCompleteTask(task.id)} />);
+            return (<BsToggleOff onClick={() => decompleteTask(task.id)} />);
         }
     }
 
@@ -38,7 +36,7 @@ const TaskComponent = ({ task }) => {
             <td>{task.description}</td>
             <td>{taskLevelBadge()}</td>
             <td>{taskIcon()}</td>
-            <td><BsTrash onClick={() => handleRemoveTask(task.id)} style={{ color: '#dc3545' }} /></td>
+            <td><BsTrash onClick={() => removeTask(task.id)} style={{ color: '#dc3545' }} /></td>
         </tr>
     );
 }
