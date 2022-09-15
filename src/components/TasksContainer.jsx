@@ -11,7 +11,7 @@ const TasksContainer = () => {
           <div className='card-header p-3'>
             <h5>Your tasks:</h5>
           </div>
-          <div className='card-body' data-mdb-perfect-scrollbar='true' >
+          <div className='card-body overflow-auto' data-mdb-perfect-scrollbar='true' >
             <TasksList />
           </div>
           <div className='card-footer'>

@@ -21,21 +21,25 @@ const TaskComponent = ({ task }) => {
         }
     }
 
-    // returns an icon depending on task's completion level
-    function taskIcon() {
-        if (task.completed) {
-            return (<BsToggleOn onClick={() => completeTask(task.id)} style={{ color: '#198754' }} />);
-        } else {
-            return (<BsToggleOff onClick={() => decompleteTask(task.id)} />);
-        }
-    }
-
     return (
         <tr className='fw-normal'>
             <th>{task.name}</th>
             <td>{task.description}</td>
             <td>{taskLevelBadge()}</td>
-            <td>{taskIcon()}</td>
+            <td>
+                {
+                    task.completed ?
+                        <BsToggleOn
+                            onClick={() => decompleteTask(task.id)}
+                            style={{ color: '#198754', marginLeft: '2rem' }}
+                        />
+                        :
+                        <BsToggleOff
+                            onClick={() => completeTask(task.id)}
+                            style={{ marginLeft: '2rem' }}
+                        />
+                }
+            </td>
             <td><BsTrash onClick={() => removeTask(task.id)} style={{ color: '#dc3545' }} /></td>
         </tr>
     );

@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <header>
-            <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+            <nav className='navbar navbar-expand-lg navbar-light bg-light overflow-hidden'>
                 <div className='container-fluid'>
                     <span className='navbar-brand' to='/'>TDList</span>
                     <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>

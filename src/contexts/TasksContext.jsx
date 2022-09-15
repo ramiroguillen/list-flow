@@ -1,10 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
 import { db } from '../services/firebase';
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import useAuth from '../hooks/useAuth';
+
 
 export const TasksContext = createContext();
 
 const TasksProvider = ({ children }) => {
+
+    const { user } = useAuth();
 
     const [loading, setLoading] = useState(false);
     const [tasks, setTasks] = useState([]);
@@ -16,7 +20,7 @@ const TasksProvider = ({ children }) => {
         try {
             const tasksCollection = await getDocs(tasksRef);
             const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            setTasks(tasksResult.filter(task => task.user === user.email));
             setLoading(false);
         } catch (error) {
             alert(error);
@@ -69,8 +73,10 @@ const TasksProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        getData();
-    }, []);
+        if (user) {
+            getData();
+        }
+    }, [user]);
 
     return (
         <TasksContext.Provider

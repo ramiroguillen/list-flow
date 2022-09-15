@@ -13,7 +13,7 @@ const Routing = () => {
         <>
             <Navbar />
             <Routes>
-                <Route exact path='/' element={<Home />} />
+                <Route exact path='/todo-list' element={<Home />} />
             </Routes>
             <Footer />
         </>

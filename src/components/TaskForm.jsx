@@ -1,12 +1,14 @@
 // libraries
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import useAuth from '../hooks/useAuth';
 // hooks
 import useFirestore from '../hooks/useFirestore';
 
 const TaskForm = () => {
 
     const { addTask } = useFirestore();
+    const { user } = useAuth();
 
     const taskSchema = Yup.object().shape(
         {
@@ -20,6 +22,7 @@ const TaskForm = () => {
         name: '',
         description: '',
         level: 'normal',
+        email: ''
     }
 
     const handleSubmit = (values) => {
@@ -27,7 +30,8 @@ const TaskForm = () => {
             name: values.name,
             description: values.description,
             completed: false,
-            level: values.level
+            level: values.level,
+            user: user.email
         }
         addTask(newTask);
     }

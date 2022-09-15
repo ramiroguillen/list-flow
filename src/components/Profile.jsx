@@ -2,13 +2,13 @@ import useAuth from "../hooks/useAuth";
 
 const Profile = () => {
 
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <div className="d-flex me-3 align-items-center">
       <img
-        src=''
-        alt=''
+        src={user.photoUrl}
+        alt={user.displayName}
         className='border border-success border-2 rounded-circle me-3'
         style={{ height: "2rem", width: "2rem" }}
       />

@@ -1,5 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    GoogleAuthProvider,
+    signInWithPopup
+} from 'firebase/auth';
 
 export const AuthContext = createContext();
 
@@ -10,7 +18,6 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const signUp = async ({ email, password }) => {
-        console.log(email, password)
         await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setUser(userCredential.user);
@@ -22,6 +29,14 @@ const AuthProvider = ({ children }) => {
         await signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setUser(userCredential.user);
+            })
+            .catch((error) => { throw new Error(error) });
+    }
+
+    const googleSignIn = async () => {
+        await signInWithPopup(auth, new GoogleAuthProvider())
+            .then((result) => {
+                setUser(result.user);
             })
             .catch((error) => { throw new Error(error) });
     }
@@ -41,7 +56,7 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ signUp, signIn, logout, user }}
+            value={{ signUp, signIn, googleSignIn, logout, user }}
         >
             {children}
         </AuthContext.Provider>
