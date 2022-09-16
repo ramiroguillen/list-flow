@@ -1,11 +1,21 @@
+import { useEffect } from 'react';
 // hooks
+import useAuth from '../hooks/useAuth';
 import useFirestore from '../hooks/useFirestore';
 // components
 import TaskComponent from './TaskComponent';
 
 const TasksList = () => {
 
-  const { loading, tasks } = useFirestore();
+  const { user } = useAuth();
+
+  const { getData, loading, tasks } = useFirestore();
+
+  useEffect(() => {
+    if (user) {
+      getData();
+    }
+  }, [user]);
 
   return (
     <table className='w-100'>

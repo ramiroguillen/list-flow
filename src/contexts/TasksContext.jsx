@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { db } from '../services/firebase';
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import useAuth from '../hooks/useAuth';
-
 
 export const TasksContext = createContext();
 
@@ -72,15 +71,9 @@ const TasksProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        if (user) {
-            getData();
-        }
-    }, [user]);
-
     return (
         <TasksContext.Provider
-            value={{ loading, tasks, completeTask, decompleteTask, addTask, removeTask }}
+            value={{ getData, loading, tasks, completeTask, decompleteTask, addTask, removeTask }}
         >
             {children}
         </TasksContext.Provider>

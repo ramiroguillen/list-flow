@@ -13,7 +13,7 @@ const TaskForm = () => {
         description: '',
         completed: false,
         level: 'normal',
-        email: user.email
+        user: user.email
     }
 
     const [task, setTask] = useState(initialValues);
