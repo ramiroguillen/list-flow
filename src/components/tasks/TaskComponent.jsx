@@ -1,7 +1,7 @@
 // hooks
-import useFirestore from '../hooks/useFirestore';
+import useFirestore from '../../hooks/useFirestore';
 // icons
-import { BsToggleOff, BsToggleOn, BsTrash } from 'react-icons/bs';
+import { BsToggleOff, BsToggleOn, BsTrashFill } from 'react-icons/bs';
 
 const TaskComponent = ({ task }) => {
 
@@ -11,11 +11,11 @@ const TaskComponent = ({ task }) => {
     function taskLevelBadge() {
         switch (task.level) {
             case 'normal':
-                return (<h6 className='mb-0'><span className='badge bg-primary'>{task.level}</span></h6>);
+                return (<h6 className='mb-0'><span className='badge text-dark' style={{ backgroundColor: '#007acc' }}>{task.level}</span></h6>);
             case 'urgent':
-                return (<h6 className='mb-0'><span className='badge bg-warning'>{task.level}</span></h6>);
+                return (<h6 className='mb-0'><span className='badge bg-warning text-dark'>{task.level}</span></h6>);
             case 'blocking':
-                return (<h6 className='mb-0'><span className='badge bg-danger'>{task.level}</span></h6>);
+                return (<h6 className='mb-0'><span className='badge bg-danger text-dark'>{task.level}</span></h6>);
             default:
                 break;
         }
@@ -23,10 +23,10 @@ const TaskComponent = ({ task }) => {
 
     return (
         <tr className='fw-normal'>
-            <th>{task.name}</th>
-            <td>{task.description}</td>
+            <th className='text-white'>{task.name}</th>
+            <td className='text-white'>{task.description}</td>
             <td>{taskLevelBadge()}</td>
-            <td>
+            <td className='text-secondary'>
                 {
                     task.completed ?
                         <BsToggleOn
@@ -40,7 +40,7 @@ const TaskComponent = ({ task }) => {
                         />
                 }
             </td>
-            <td><BsTrash onClick={() => removeTask(task.id)} style={{ color: '#dc3545' }} /></td>
+            <td><BsTrashFill onClick={() => removeTask(task.id)} style={{ color: '#dc3545' }} /></td>
         </tr>
     );
 }

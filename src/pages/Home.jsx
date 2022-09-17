@@ -1,8 +1,8 @@
 // hooks
 import useAuth from '../hooks/useAuth';
 // components
-import TasksContainer from '../components/TasksContainer';
-import Welcome from '../components/Welcome';
+import TasksContainer from '../containers/TasksContainer';
+import Welcome from '../containers/Welcome';
 
 const Home = () => {
 

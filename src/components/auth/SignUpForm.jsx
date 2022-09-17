@@ -1,10 +1,8 @@
 import { useState } from 'react';
 // hooks
-import useAuth from '../hooks/useAuth';
-// icons
-import { BsGoogle } from 'react-icons/bs'
+import useAuth from '../../hooks/useAuth';
 
-const SignInForm = ({ show }) => {
+const SignUpForm = ({ show }) => {
 
     const initialValues = {
         email: '',
@@ -17,14 +15,10 @@ const SignInForm = ({ show }) => {
         setUser({ ...user, [name]: value });
     };
 
-    const { signIn, googleSignIn } = useAuth();
+    const { signUp } = useAuth();
 
-    const handleSignIn = (user) => {
-        signIn(user);
-    }
-
-    const handleGoogleSignIn = () => {
-        googleSignIn();
+    const handleSignUp = () => {
+        signUp(user);
     }
 
     return (
@@ -37,20 +31,14 @@ const SignInForm = ({ show }) => {
                     <input onChange={handleChange} id='password' name='password' type='password' className='form-control mt-3' required placeholder='********' style={{ width: '16rem' }} />
                 </label>
                 <div className='d-flex justify-content-center'>
-                    <button onClick={handleSignIn} className='btn btn-success mt-3' style={{ width: '16rem' }}>Sign In</button>
+                    <button onClick={handleSignUp} className='btn btn-primary mt-3' style={{ width: '16rem', backgroundColor: '#007acc' }}>Sign Up</button>
                 </div>
                 <div className='d-flex justify-content-center'>
-                    <button onClick={handleGoogleSignIn} className='btn btn-primary mt-3' style={{ width: '16rem' }}>
-                        <BsGoogle className='me-3' />
-                        Sign In with Google
-                    </button>
-                </div>
-                <div className='d-flex justify-content-center'>
-                    <button onClick={show} className='btn btn-secondary mt-3'>Back</button>
+                    <button onClick={show} className='btn mt-3' style={{ backgroundColor: '#3e3e42', color:'white' }}>Back</button>
                 </div>
             </div>
         </div>
     );
 }
 
-export default SignInForm;
+export default SignUpForm;

@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import useFirestore from '../hooks/useFirestore';
 // components
-import TaskComponent from './TaskComponent';
+import TaskComponent from '../components/tasks/TaskComponent';
 
-const TasksList = () => {
+const TasksTable = () => {
 
   const { user } = useAuth();
 
@@ -18,13 +18,13 @@ const TasksList = () => {
   }, [user]);
 
   return (
-    <table className='w-100'>
+    <table className='w-100 table' style={{ backgroundColor: '#252526' }}>
       <thead>
         <tr>
-          <th scope='col'>Task</th>
-          <th scope='col'>Description</th>
-          <th scope='col'>Priority</th>
-          <th scope='col'>Completed</th>
+          <th scope='col' className='text-white'>Task</th>
+          <th scope='col' className='text-white'>Description</th>
+          <th scope='col' className='text-white'>Priority</th>
+          <th scope='col' className='text-white'>Completed</th>
           <th scope='col'></th>
         </tr>
       </thead>
@@ -47,4 +47,4 @@ const TasksList = () => {
   );
 }
 
-export default TasksList;
+export default TasksTable;

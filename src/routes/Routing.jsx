@@ -3,21 +3,21 @@ import { Routes, Route } from 'react-router-dom';
 // pages
 import Home from '../pages/Home';
 // components
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navigation/Navbar';
+import Footer from '../components/navigation/Footer';
+import React from 'react';
 
 
 const Routing = () => {
 
     return (
-        <>
+        <div style={{ height: '100vh' }}>
             <Navbar />
             <Routes>
                 <Route exact path='/todo-list' element={<Home />} />
             </Routes>
             <Footer />
-        </>
-
+        </div>
     );
 }
 
