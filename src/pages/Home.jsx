@@ -11,10 +11,9 @@ const Home = () => {
     return (
         <>
             {
-                !user ?
-                    <Welcome />
-                    :
+                user ?
                     <TasksContainer />
+                    : <Welcome />
             }
         </>
     );

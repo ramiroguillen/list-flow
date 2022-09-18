@@ -18,13 +18,13 @@ const TasksTable = () => {
   }, [user]);
 
   return (
-    <table className='w-100 table' style={{ backgroundColor: '#252526' }}>
+    <table className='table' style={{ backgroundColor: '#252526', maxWidth:'100%' }}>
       <thead>
         <tr>
           <th scope='col' className='text-white'>Task</th>
           <th scope='col' className='text-white'>Description</th>
           <th scope='col' className='text-white'>Priority</th>
-          <th scope='col' className='text-white'>Completed</th>
+          <th scope='col' className='text-white'>Complete</th>
           <th scope='col'></th>
         </tr>
       </thead>

@@ -6,7 +6,7 @@ const Profile = () => {
   const { logout, user } = useAuth();
 
   return (
-    <div className="d-flex me-3 align-items-center">
+    <div className="d-flex me-3 align-items-center justify-content-end">
       <img
         src={user.photoUrl}
         alt={user.displayName}

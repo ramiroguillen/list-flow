@@ -11,7 +11,7 @@ import React from 'react';
 const Routing = () => {
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div style={{ height: '100vh', width:'100vw' }}>
             <Navbar />
             <Routes>
                 <Route exact path='/todo-list' element={<Home />} />
