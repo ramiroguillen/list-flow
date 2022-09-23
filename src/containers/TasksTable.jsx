@@ -1,24 +1,19 @@
 import { useEffect } from 'react';
 // hooks
-import useAuth from '../hooks/useAuth';
 import useFirestore from '../hooks/useFirestore';
 // components
 import TaskComponent from '../components/tasks/TaskComponent';
 
 const TasksTable = () => {
 
-  const { user } = useAuth();
-
   const { getData, loading, tasks } = useFirestore();
 
   useEffect(() => {
-    if (user) {
-      getData();
-    }
-  }, [user]);
+    getData();
+  }, []);
 
   return (
-    <table className='table' style={{ backgroundColor: '#252526', maxWidth:'100%' }}>
+    <table className='table' style={{ backgroundColor: '#252526', maxWidth: '100%' }}>
       <thead>
         <tr>
           <th scope='col' className='text-white'>Task</th>

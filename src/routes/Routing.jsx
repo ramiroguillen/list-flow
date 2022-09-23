@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 // components
 import Navbar from '../components/navigation/Navbar';
 import Footer from '../components/navigation/Footer';
+import TaskDetails from '../components/tasks/TaskDetails';
 import React from 'react';
 
 
@@ -15,6 +16,7 @@ const Routing = () => {
             <Navbar />
             <Routes>
                 <Route exact path='/todo-list' element={<Home />} />
+                <Route path='/todo-list/task/:id' element={<TaskDetails />} />
             </Routes>
             <Footer />
         </div>

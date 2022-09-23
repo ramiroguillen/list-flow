@@ -14,7 +14,7 @@ const TasksContainer = () => {
           <div className='card-body overflow-auto' data-mdb-perfect-scrollbar='true' style={{ padding: '0 0.5rem', backgroundColor: '#252526' }}>
             <TasksTable />
           </div>
-          <div className='card-footer' style={{ backgroundColor: '#2d2d30' }}>
+          <div className='card-footer d-flex flex-column align-items-center' style={{ backgroundColor: '#2d2d30' }}>
             <TaskForm />
           </div>
         </div>

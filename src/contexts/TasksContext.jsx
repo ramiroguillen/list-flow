@@ -11,6 +11,7 @@ const TasksProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(false);
     const [tasks, setTasks] = useState([]);
+    const [task, setTask] = useState({});
 
     const tasksRef = collection(db, 'tasks');
 
@@ -26,6 +27,18 @@ const TasksProvider = ({ children }) => {
             setLoading(false);
         }
     };
+
+    const getTaskById = (id) => {
+        setLoading(true);
+        try {
+            const task = tasks.find(task => task.id === id);
+            setTask(task);
+            setLoading(false);
+        } catch (error) {
+            alert(error);
+            setLoading(false);
+        }
+    }
 
     const completeTask = async (id) => {
         try {
@@ -73,7 +86,7 @@ const TasksProvider = ({ children }) => {
 
     return (
         <TasksContext.Provider
-            value={{ getData, loading, tasks, completeTask, decompleteTask, addTask, removeTask }}
+            value={{ getData, loading, tasks, getTaskById, task, completeTask, decompleteTask, addTask, removeTask }}
         >
             {children}
         </TasksContext.Provider>

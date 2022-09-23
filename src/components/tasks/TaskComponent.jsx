@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // hooks
 import useFirestore from '../../hooks/useFirestore';
 // icons
@@ -11,7 +12,7 @@ const TaskComponent = ({ task }) => {
     function taskLevelBadge() {
         switch (task.level) {
             case 'normal':
-                return (<h6 className='mb-0'><span className='badge text-dark' style={{ backgroundColor: task.completed ? '#6c757d': '#007acc' }}>{task.level}</span></h6>);
+                return (<h6 className='mb-0'><span className='badge text-dark' style={{ backgroundColor: task.completed ? '#6c757d' : '#007acc' }}>{task.level}</span></h6>);
             case 'urgent':
                 return (<h6 className='mb-0'><span className={task.completed === true ? ' badge bg-secondary text-dark' : 'badge bg-warning text-dark'}>{task.level}</span></h6>);
             case 'blocking':
@@ -23,8 +24,13 @@ const TaskComponent = ({ task }) => {
 
     return (
         <tr className='fw-normal'>
-            <th style={{ textDecoration: task.completed ? 'line-through' : null, fontStyle: task.completed ? 'italic' : null, color: task.completed ? '#6c757d' : 'white' }}>{task.name}</th>
-            <td style={{ textDecoration: task.completed ? 'line-through' : null, fontStyle: task.completed ? 'italic' : null, color: task.completed ? '#6c757d' : 'white' }}>{task.description}</td>
+            <th>
+                <Link to={`/todo-list/task/${task.id}`} style={{ textDecoration: task.completed ? 'line-through' : 'none', fontStyle: task.completed ? 'italic' : null, color: task.completed ? '#6c757d' : 'white' }}>{task.name}</Link>
+            </th>
+            <td className='overflow-scroll' 
+            style={{ textDecoration: task.completed ? 'line-through' : null, fontStyle: task.completed ? 'italic' : null, color: task.completed ? '#6c757d' : 'white' }}>
+                {task.description}
+            </td>
             <td>{taskLevelBadge()}</td>
             <td className='text-secondary'>
                 {

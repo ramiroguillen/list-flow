@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 // hooks
 import useAuth from '../../hooks/useAuth';
 // components
@@ -10,7 +11,7 @@ const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark overflow-hidden py-2' style={{ minHeight:'7.5%', backgroundColor: '#252526' }}>
             <div className='container-fluid ms-3'>
-                <span className='navbar-brand' to='/'>TDList</span>
+                <Link className='navbar-brand' to='/todo-list'>TDList</Link>
                 {
                     user ?
                         <>
