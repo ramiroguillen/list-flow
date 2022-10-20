@@ -19,31 +19,29 @@ const Welcome = () => {
     }
 
     return (
-        <div id="tasks" className='d-flex justify-content-center tasks-container' style={{ height: '80%', backgroundColor: '#1e1e1e' }}>
+        <section id="tasks" className='d-flex justify-content-center card-container'>
             <div className='col-md-4 mt-1'>
-                <div className='card' style={{ borderColor: 'black', height: '98%' }}>
-                    <div className='card-header' style={{ backgroundColor: '#2d2d30' }}>
-                        <h2 className="text-center mt-5 text-white">Welcome!</h2>
+                <div className='card card'>
+                    <div className='card-header'>
+                        <h2 className="text-center mt-5 text-white" >Welcome!</h2>
                     </div>
-                    <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ backgroundColor: '#252526', paddingBottom:'6rem' }}>
+                    <div className='card-body' data-mdb-perfect-scrollbar='true'>
                         {
                             !modalSignIn && !modalSignUp ?
                                 <div className="mt-5">
-                                    <h2 className="text-center mt-5" style={{ color: '#007acc' }}><BsKey /> <BsShieldLock /></h2>
-                                    <h5 className="text-center mt-5 text-white">You need to login to access the information.</h5>
+                                    <h2 className="text-center mt-5 icons"><BsKey /> <BsShieldLock /></h2>
+                                    <h5 className="text-center mt-5">You need to login to access the information.</h5>
                                     <div className='container w-100 d-flex flex-column align-items-center'>
                                         <button
                                             onClick={handleModalSignIn}
-                                            className='btn mt-5'
-                                            style={{ width: "8rem", backgroundColor:'#007acc', color: 'white' }}
+                                            className='btn mt-5 btn-primary'
                                         >
                                             Sign In
                                         </button>
-                                        <h6 className='my-2 text-white'>- or -</h6>
+                                        <h6 className='my-2'>- or -</h6>
                                         <button
                                             onClick={handleModalSignUp}
-                                            className='btn mt-1'
-                                            style={{ width: "8rem", backgroundColor:'#007acc', color: 'white' }}
+                                            className='btn mt-1 btn-primary'
                                         >
                                             Sign Up
                                         </button>
@@ -59,7 +57,7 @@ const Welcome = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -15,8 +15,8 @@ const Routing = () => {
         <div style={{ height: '100vh', width:'100vw' }}>
             <Navbar />
             <Routes>
-                <Route exact path='/todo-list' element={<Home />} />
-                <Route path='/todo-list/task/:id' element={<TaskDetails />} />
+                <Route exact path='/todo-app' element={<Home />} />
+                <Route path='/todo-app/task/:id' element={<TaskDetails />} />
             </Routes>
             <Footer />
         </div>

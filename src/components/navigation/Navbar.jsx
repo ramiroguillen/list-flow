@@ -1,17 +1,19 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // hooks
 import useAuth from '../../hooks/useAuth';
 // components
 import Profile from './Profile';
+// icons
+import { BsListCheck } from 'react-icons/bs'
 
 const Navbar = () => {
 
     const { user } = useAuth();
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-dark overflow-hidden py-2' style={{ minHeight:'7.5%', backgroundColor: '#252526' }}>
+        <nav className='navbar navbar-expand-lg navbar-dark py-2'>
             <div className='container-fluid ms-3'>
-                <Link className='navbar-brand' to='/todo-list'>TDList</Link>
+                <Link className='navbar-brand text-white brand' to='/todo-app'>List Flow <BsListCheck /></Link>
                 {
                     user ?
                         <>

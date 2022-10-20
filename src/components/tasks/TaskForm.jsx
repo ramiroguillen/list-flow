@@ -29,17 +29,42 @@ const TaskForm = () => {
     }
 
     return (
-        <form className='d-flex flex-column mb-4' onSubmit={handleSubmit} style={{ width: '40%' }}>
-            <input onChange={handleChange} name='name' type='text' className='form-control w-100' required placeholder='Task Name' style={{ backgroundColor: '#1e1e1e', border: 'none', color: 'white' }} />
-            <input onChange={handleChange} name='description' type='text' className='form-control mt-1' required placeholder='Task Description' style={{ backgroundColor: '#1e1e1e', border: 'none', color: 'white' }} />
-            <label htmlFor='level' className='m-1 text-white'>Priority Level:</label>
-            <select onChange={handleChange} name='level' className='form-select' style={{ backgroundColor: '#1e1e1e', border: 'none', color: 'gray' }}>
+        <form className='d-flex flex-column mb-4' onSubmit={handleSubmit} >
+
+            <input onChange={handleChange}
+                name='name'
+                type='text'
+                className='form-control'
+                required
+                placeholder='Task Name'
+            />
+
+            <input
+                onChange={handleChange}
+                name='description'
+                type='text'
+                className='form-control mt-1'
+                required
+                placeholder='Task Description'
+
+            />
+
+            <label htmlFor='level' className='m-1 mt-3 text-gray'>Priority Level:</label>
+            <select
+                onChange={handleChange}
+                name='level'
+                className='form-select'>
                 <option value='normal'>Normal</option>
                 <option value='urgent'>Urgent</option>
                 <option value='blocking'>Blocking</option>
             </select>
+
             <div className='d-flex justify-content-end'>
-                <button type='submit' className='btn mt-3' style={{ backgroundColor: '#007acc', color: 'white' }}>ADD</button>
+                <button
+                    type='submit'
+                    className='btn mt-3 btn-primary'
+                    style={{ width: '4rem' }}>ADD
+                </button>
             </div>
         </form>
     );

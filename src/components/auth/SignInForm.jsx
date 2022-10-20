@@ -2,7 +2,8 @@ import { useState } from 'react';
 // hooks
 import useAuth from '../../hooks/useAuth';
 // icons
-import { BsGoogle } from 'react-icons/bs'
+import { BsGoogle } from 'react-icons/bs';
+
 
 const SignInForm = ({ show }) => {
 
@@ -29,26 +30,29 @@ const SignInForm = ({ show }) => {
 
     return (
         <div className='mt-5'>
-            <div className='d-flex flex-column align-items-center'>
+            <form className='d-flex flex-column align-items-center'>
                 <label htmlFor='email' className='form-label'>
-                    <input onChange={handleChange} id='email' name='email' type='email' className='form-control' required placeholder='Email address' style={{ width: '16rem' }} />
+                    <input onChange={handleChange} id='email' name='email' type='email' className='form-control input' required placeholder='Email address' />
                 </label>
                 <label htmlFor='password' className='form-label'>
-                    <input onChange={handleChange} id='password' name='password' type='password' className='form-control mt-3' required placeholder='********' style={{ width: '16rem' }} />
+                    <input onChange={handleChange} id='password' name='password' type='password' className='form-control mt-3 input' required placeholder='********' />
                 </label>
                 <div className='d-flex justify-content-center'>
-                    <button onClick={handleSignIn} className='btn btn-success mt-3' style={{ width: '16rem' }}>Sign In</button>
+                    <button onClick={handleSignIn}
+                        className='btn mt-3 btn-secondary'
+                        >Sign In</button>
                 </div>
                 <div className='d-flex justify-content-center'>
-                    <button onClick={handleGoogleSignIn} className='btn btn-primary mt-3 d-flex align-items-center justify-content-center' style={{ width: '16rem', backgroundColor:'#007acc' }}>
+                    <button onClick={handleGoogleSignIn}
+                        className='btn mt-3 d-flex align-items-center justify-content-center btn-primary'>
                         <BsGoogle className='me-3' />
                         Sign In with Google
                     </button>
                 </div>
                 <div className='d-flex justify-content-center'>
-                    <button onClick={show} className='btn mt-3' style={{ backgroundColor: '#3e3e42', color:'white' }}>Back</button>
+                    <button onClick={show} className='btn mt-3 btn-info'>Back</button>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

@@ -7,6 +7,8 @@ import AuthProvider from './contexts/AuthContext';
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
+// custom styles
+import './styles/index.scss';
 
 function App() {
   return (

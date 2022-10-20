@@ -1,0 +1,35 @@
+:root {
+    --bg-color: #25274d;
+    --primary-color: #2e9cca;
+    --secondary-color: #296484;
+    --light-gray: #BCBDC7;
+    --gray: #424461;
+}
+
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+h5,
+h6, .text-gray, .link-gray {
+    color: var(--light-gray);
+}
+
+.link-gray:hover{
+    color: var(--primary-color);
+}
+
+.icons {
+    color: var(--primary-color);
+}
+
+@import './src/styles/navbarStyles.scss';
+@import './src/styles/footerStyles.scss';
+@import './src/styles/buttonStyles.scss';
+@import './src/styles/cardStyles.scss';
+@import './src/styles/tableStyles.scss';
+@import './src/styles/formStyles.scss';
+
+@import './src/styles/tasksStyles.scss';

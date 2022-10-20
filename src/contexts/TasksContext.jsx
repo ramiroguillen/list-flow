@@ -62,6 +62,17 @@ const TasksProvider = ({ children }) => {
         }
     }
 
+    const editTask = async (id, obj) => {
+        try {
+            await updateDoc(doc(tasksRef, id), obj);
+            const tasksCollection = await getDocs(tasksRef);
+            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(tasksResult);
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     const addTask = async (task) => {
         try {
             await addDoc(tasksRef, task);
@@ -86,7 +97,7 @@ const TasksProvider = ({ children }) => {
 
     return (
         <TasksContext.Provider
-            value={{ getData, loading, tasks, getTaskById, task, completeTask, decompleteTask, addTask, removeTask }}
+            value={{ getData, loading, tasks, getTaskById, task, completeTask, decompleteTask, editTask, addTask, removeTask }}
         >
             {children}
         </TasksContext.Provider>

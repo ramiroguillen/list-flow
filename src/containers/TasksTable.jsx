@@ -13,7 +13,7 @@ const TasksTable = () => {
   }, []);
 
   return (
-    <table className='table' style={{ backgroundColor: '#252526', maxWidth: '100%' }}>
+    <table className='table' >
       <thead>
         <tr>
           <th scope='col' className='text-white'>Task</th>

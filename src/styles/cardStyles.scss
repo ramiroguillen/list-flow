@@ -1,0 +1,25 @@
+.card-container {
+    min-height: 80%;
+    background-color: var(--bg-color);
+}
+
+.card {
+    height: 98%;
+    border: none;
+
+    .card-header {
+        background-color: var(--bg-color);
+        border: none;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .card-body {
+        background-color: var(--bg-color);
+        max-height: 20rem;
+        overflow-y: auto;
+    }
+    .card-footer{
+        background-color: var(--bg-color);
+        border: none;
+    }
+}
