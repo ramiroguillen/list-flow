@@ -10,17 +10,19 @@ const TasksProvider = ({ children }) => {
     const { user } = useAuth();
 
     const [loading, setLoading] = useState(false);
+    const [editing, setEditing] = useState(false);
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState({});
+    const [id, setId] = useState(null);
 
     const tasksRef = collection(db, 'tasks');
 
     const getData = async () => {
         setLoading(true);
         try {
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult.filter(task => task.user === user.email));
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result.filter(task => task.user === user.email));
             setLoading(false);
         } catch (error) {
             alert(error);
@@ -43,9 +45,9 @@ const TasksProvider = ({ children }) => {
     const completeTask = async (id) => {
         try {
             await updateDoc(doc(tasksRef, id), { completed: true });
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result);
         } catch (error) {
             alert(error);
         }
@@ -54,9 +56,9 @@ const TasksProvider = ({ children }) => {
     const decompleteTask = async (id) => {
         try {
             await updateDoc(doc(tasksRef, id), { completed: false });
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result);
         } catch (error) {
             alert(error);
         }
@@ -64,10 +66,10 @@ const TasksProvider = ({ children }) => {
 
     const editTask = async (id, obj) => {
         try {
-            await updateDoc(doc(tasksRef, id), obj);
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            await updateDoc(doc(tasksRef, id), { name: obj.name, description: obj.description, level: obj.level });
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result);
         } catch (error) {
             alert(error);
         }
@@ -76,9 +78,9 @@ const TasksProvider = ({ children }) => {
     const addTask = async (task) => {
         try {
             await addDoc(tasksRef, task);
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result);
         } catch (error) {
             alert(error);
         }
@@ -87,9 +89,9 @@ const TasksProvider = ({ children }) => {
     const removeTask = async (id) => {
         try {
             await deleteDoc(doc(db, 'tasks', id));
-            const tasksCollection = await getDocs(tasksRef);
-            const tasksResult = tasksCollection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(tasksResult);
+            const collection = await getDocs(tasksRef);
+            const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
+            setTasks(result);
         } catch (error) {
             alert(error);
         }
@@ -97,7 +99,7 @@ const TasksProvider = ({ children }) => {
 
     return (
         <TasksContext.Provider
-            value={{ getData, loading, tasks, getTaskById, task, completeTask, decompleteTask, editTask, addTask, removeTask }}
+            value={{ getData, loading, tasks, getTaskById, task, completeTask, decompleteTask, editTask, addTask, removeTask, setTask, editing, setEditing, id, setId }}
         >
             {children}
         </TasksContext.Provider>

@@ -6,11 +6,16 @@ import TaskComponent from '../components/tasks/TaskComponent';
 
 const TasksTable = () => {
 
-  const { getData, loading, tasks } = useFirestore();
+  const { getData, loading, tasks, setTasks } = useFirestore();
 
   useEffect(() => {
     getData();
   }, []);
+
+  function sortList() {
+    let sortedTasks = tasks.sort();
+    setTasks(sortedTasks);
+  }
 
   return (
     <table className='table' >
@@ -19,7 +24,7 @@ const TasksTable = () => {
           <th scope='col' className='text-white'>Task</th>
           <th scope='col' className='text-white'>Description</th>
           <th scope='col' className='text-white'>Priority</th>
-          <th scope='col' className='text-white'>Complete</th>
+          <th scope='col' className='text-white'>Finished</th>
           <th scope='col'></th>
         </tr>
       </thead>
@@ -27,14 +32,14 @@ const TasksTable = () => {
         {
           loading ?
             <tr>
-              <th scope='col-5'>Retrieving tasks...</th>
+              <td className='text-gray'>Retrieving tasks...</td>
             </tr>
             :
             tasks.length > 0 ?
               tasks.map((task) => <TaskComponent task={task} key={task.id} />)
               :
               <tr>
-                <th scope='col-5'>There are no tasks to show.</th>
+                <td className='text-gray'>There are no tasks to show.</td>
               </tr>
         }
       </tbody>

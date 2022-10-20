@@ -11,7 +11,7 @@ const TasksContainer = () => {
           <div className='card-header pt-5'>
             <h5 className='text-gray'>Your tasks:</h5>
           </div>
-          <div className='card-body'>
+          <div className='card-body' style={{ height: '16.5rem' }}>
             <TasksTable />
           </div>
           <div className='card-footer d-flex flex-column align-items-center'>

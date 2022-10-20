@@ -5,14 +5,14 @@ import useAuth from '../../hooks/useAuth';
 
 const TaskForm = () => {
 
-    const { addTask } = useFirestore();
+    const { addTask, editing, setEditing, id, editTask } = useFirestore();
     const { user } = useAuth();
 
     const initialValues = {
         name: '',
         description: '',
         completed: false,
-        level: 'normal',
+        level: '1',
         user: user.email
     }
 
@@ -24,12 +24,20 @@ const TaskForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addTask(task);
-        setTask(initialValues);
+        setTask(task);
+        if (editing) {
+            editTask(id, task)
+        } else if (!editing) {
+            addTask(task);
+        }
+        setEditing(false);
+        e.target.reset();
     }
 
     return (
         <form className='d-flex flex-column mb-4' onSubmit={handleSubmit} >
+
+            <h5 className='text-white'>{editing ? 'Edit task:' : 'New task:'}</h5>
 
             <input onChange={handleChange}
                 name='name'
@@ -46,7 +54,6 @@ const TaskForm = () => {
                 className='form-control mt-1'
                 required
                 placeholder='Task Description'
-
             />
 
             <label htmlFor='level' className='m-1 mt-3 text-gray'>Priority Level:</label>
@@ -54,16 +61,18 @@ const TaskForm = () => {
                 onChange={handleChange}
                 name='level'
                 className='form-select'>
-                <option value='normal'>Normal</option>
-                <option value='urgent'>Urgent</option>
-                <option value='blocking'>Blocking</option>
+                <option value='1'>Normal</option>
+                <option value='2'>Urgent</option>
+                <option value='3'>Blocking</option>
             </select>
 
             <div className='d-flex justify-content-end'>
                 <button
                     type='submit'
                     className='btn mt-3 btn-primary'
-                    style={{ width: '4rem' }}>ADD
+                    style={{ width: '4rem' }}
+                >
+                    {editing ? 'EDIT' : 'ADD'}
                 </button>
             </div>
         </form>
