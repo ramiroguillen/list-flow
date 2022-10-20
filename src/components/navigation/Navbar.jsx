@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark py-2'>
             <div className='container-fluid ms-3'>
-                <Link className='navbar-brand text-white brand' to='/todo-app'>List Flow <BsListCheck /></Link>
+                <Link className='navbar-brand text-white brand' to='/list-flow'>List Flow <BsListCheck /></Link>
                 {
                     user ?
                         <>

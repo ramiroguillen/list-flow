@@ -5,7 +5,7 @@ import TasksTable from './TasksTable';
 const TasksContainer = () => {
 
   return (
-    <div id="tasks" className='d-flex justify-content-center card-container'>
+    <section id="tasks" className='d-flex justify-content-center card-container'>
       <div className='col-lg-8 col-12 mt-1'>
         <div className='card card-override'>
           <div className='card-header pt-5'>
@@ -19,7 +19,7 @@ const TasksContainer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 // components
 import Navbar from '../components/navigation/Navbar';
 import Footer from '../components/navigation/Footer';
-import TaskDetails from '../components/tasks/TaskDetails';
+// import TaskDetails from '../components/tasks/TaskDetails';
 import React from 'react';
 
 
@@ -15,8 +15,8 @@ const Routing = () => {
         <div style={{ height: '100vh', width:'100vw' }}>
             <Navbar />
             <Routes>
-                <Route exact path='/todo-app' element={<Home />} />
-                <Route path='/todo-app/task/:id' element={<TaskDetails />} />
+                <Route exact path='/list-flow' element={<Home />} />
+                {/* <Route path='/todo-app/task/:id' element={<TaskDetails />} /> */}
             </Routes>
             <Footer />
         </div>

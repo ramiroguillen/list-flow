@@ -24,7 +24,7 @@ const TasksTable = () => {
           <th scope='col' className='text-white'>Task</th>
           <th scope='col' className='text-white'>Description</th>
           <th scope='col' className='text-white'>Priority</th>
-          <th scope='col' className='text-white'>Finished</th>
+          <th scope='col' className='text-white'>Completed</th>
           <th scope='col'></th>
         </tr>
       </thead>

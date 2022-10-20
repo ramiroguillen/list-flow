@@ -14,12 +14,12 @@
     border-color: var(--light-gray) !important;
     background-image: none !important;
     border: 0 !important;
+
 }
 
 .btn-secondary{
     width: 16rem;
     background-color: var(--bg-color) !important;
-    // border-color: var(--primary-color) !important;
     background-image: none !important;
     color: white !important;
     border: 1px solid var(--primary-color)!important;
@@ -31,7 +31,6 @@
 .btn-secondary:visited {
     width: 16rem;
     background-color: var(--bg-color) !important;
-    // border-color: var(--primary-color) !important;
     background-image: none !important;
     color: white !important;
     border: 1px solid var(--primary-color)!important;
