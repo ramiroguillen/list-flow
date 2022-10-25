@@ -1,0 +1,64 @@
+.rbc-btn-group {
+    button {
+        color: white;
+        border: 1px solid var(--primary-color);
+
+    }
+
+    button:hover,
+    button:focus,
+    button:active,
+    button:visited {
+        color: white;
+        background-color: var(--bg-color-light);
+        border: 1px solid var(--primary-color);
+    }
+
+    .rbc-active {
+        color: white !important;
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .rbc-active:hover,
+    .rbc-active:focus,
+    .rbc-active:active,
+    .rbc-active:visited {
+        color: white !important;
+        background-color: var(--primary-color-light) !important;
+        border-color: var(--light-gray)
+    }
+}
+
+.rbc-toolbar-label {
+    color: white;
+}
+
+.rbc-month-view {
+    border: 1px solid var(--primary-color);
+}
+
+.rbc-header {
+    color: white;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.rbc-header+.rbc-header {
+    border-left: 1px solid var(--primary-color);
+}
+
+.rbc-off-range-bg {
+    background: var(--gray);
+}
+
+.rbc-row-content{
+    color: white;
+}
+
+.rbc-today{
+    background: var(--primary-color);
+}
+
+.rbc-day-bg + .rbc-day-bg {
+    border-left: 1px solid var(--light-gray);
+  }

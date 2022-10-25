@@ -1,7 +1,7 @@
-import { createContext, useState } from 'react';
-import { db } from '../services/firebase';
-import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
-import useAuth from '../hooks/useAuth';
+import { createContext, useState } from "react";
+import { db } from "../services/firebase";
+import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import useAuth from "../hooks/useAuth";
 
 export const TasksContext = createContext();
 
@@ -15,14 +15,15 @@ const TasksProvider = ({ children }) => {
     const [task, setTask] = useState({});
     const [id, setId] = useState(null);
 
-    const tasksRef = collection(db, 'tasks');
+    const tasksRef = collection(db, "tasks");
 
     const getData = async () => {
         setLoading(true);
         try {
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result.filter(task => task.user === user.email));
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
             setLoading(false);
         } catch (error) {
             alert(error);
@@ -47,7 +48,8 @@ const TasksProvider = ({ children }) => {
             await updateDoc(doc(tasksRef, id), { completed: true });
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result);
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
         } catch (error) {
             alert(error);
         }
@@ -58,7 +60,8 @@ const TasksProvider = ({ children }) => {
             await updateDoc(doc(tasksRef, id), { completed: false });
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result);
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
         } catch (error) {
             alert(error);
         }
@@ -69,7 +72,8 @@ const TasksProvider = ({ children }) => {
             await updateDoc(doc(tasksRef, id), { name: obj.name, description: obj.description, level: obj.level });
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result);
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
         } catch (error) {
             alert(error);
         }
@@ -80,7 +84,8 @@ const TasksProvider = ({ children }) => {
             await addDoc(tasksRef, task);
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result);
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
         } catch (error) {
             alert(error);
         }
@@ -88,10 +93,11 @@ const TasksProvider = ({ children }) => {
 
     const removeTask = async (id) => {
         try {
-            await deleteDoc(doc(db, 'tasks', id));
+            await deleteDoc(doc(db, "tasks", id));
             const collection = await getDocs(tasksRef);
             const result = collection.docs.map((doc) => doc = { id: doc.id, ...doc.data() });
-            setTasks(result);
+            let userItems = result.filter(task => task.user === user.email);
+            setTasks(userItems);
         } catch (error) {
             alert(error);
         }

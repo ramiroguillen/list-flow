@@ -1,11 +1,15 @@
 footer {
-    height: 12.5%;
+    height: 7.5%;
 
     p {
         color: var(--light-gray);
+        :hover {
+            color: var(--primary-color);
+        }
 
         a {
             text-decoration: none;
+            color: white;
         }
     }
 }

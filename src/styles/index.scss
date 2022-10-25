@@ -1,9 +1,16 @@
 :root {
     --bg-color: #25274d;
+    --bg-color-light: #35386E;
     --primary-color: #2e9cca;
+    --primary-color-light: #59B3D9;
     --secondary-color: #296484;
     --light-gray: #BCBDC7;
     --gray: #424461;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
@@ -11,12 +18,19 @@ body {
     background-color: var(--bg-color);
 }
 
+.section-container {
+    min-height: 85%;
+    background-color: var(--bg-color);
+}
+
 h5,
-h6, .text-gray, .link-gray {
+h6,
+.text-gray,
+.link-gray {
     color: var(--light-gray);
 }
 
-.link-gray:hover{
+.link-gray:hover {
     color: var(--primary-color);
 }
 
@@ -30,5 +44,5 @@ h6, .text-gray, .link-gray {
 @import './src/styles/cardStyles.scss';
 @import './src/styles/tableStyles.scss';
 @import './src/styles/formStyles.scss';
-
 @import './src/styles/tasksStyles.scss';
+@import './src/styles/scheduleStyles.scss';

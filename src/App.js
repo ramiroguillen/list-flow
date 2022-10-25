@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 // routes
-import Routing from './routes/Routing';
+import Routing from "./routes/Routing";
 // context providers
-import TasksProvider from './contexts/TasksContext';
-import AuthProvider from './contexts/AuthContext';
+import TasksProvider from "./contexts/TasksContext";
+import AuthProvider from "./contexts/AuthContext";
 // bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap";
 // custom styles
-import './styles/index.scss';
+import "./styles/index.scss";
 
 function App() {
   return (

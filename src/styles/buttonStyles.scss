@@ -10,7 +10,7 @@
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:visited {
-    background-color: var(--primary-color) !important;
+    background-color: var(--primary-color-light) !important;
     border-color: var(--light-gray) !important;
     background-image: none !important;
     border: 0 !important;
@@ -30,7 +30,7 @@
 .btn-secondary:focus,
 .btn-secondary:visited {
     width: 16rem;
-    background-color: var(--bg-color) !important;
+    background-color: var(--bg-color-light) !important;
     background-image: none !important;
     color: white !important;
     border: 1px solid var(--primary-color)!important;
@@ -47,10 +47,10 @@
 .btn-info:hover,
 .btn-info:active,
 .btn-info:focus,
-.button-back-override:visited {
-    background-color: var(--secondary-color) !important;
+.btn-info-override:visited {
+    background-color: var(--primary-color) !important;
     border-color: var(--light-gray) !important;
     background-image: none !important;
     border: 0 !important;
-    color: var(--light-gray)!important;
+    color: white!important;
 }
