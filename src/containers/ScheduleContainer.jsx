@@ -18,11 +18,11 @@ const ScheduleContainer = () => {
             <div className="col-lg-8 col-12 mt-1">
                 <div className="card">
                     <div className="card-header pt-5 d-flex justify-content-between align-items-end">
-                        <h5 className="text-gray m-0">Your agenda:</h5>
-                        <button className="btn btn-primary" style={{ width: "4rem" }}><AiOutlinePlus /></button>
+                        <h5 className="text-gray m-0">Site under construction</h5>
+                        {/* <button className="btn btn-primary" style={{ width: "4rem" }}><AiOutlinePlus /></button> */}
                     </div>
                     <div className="card-body">
-                        <Schedule />
+                        {/* <Schedule /> */}
                     </div>
                 </div>
             </div>
