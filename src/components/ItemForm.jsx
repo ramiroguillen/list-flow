@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 
 const ItemForm = () => {
 
-    const { addTask, editing, setEditing, id, editTask } = useFirestore();
+    const { addNew, editing, setEditing, id, updateById } = useFirestore();
     const { user } = useAuth();
 
     const initialValues = {
@@ -26,9 +26,9 @@ const ItemForm = () => {
         e.preventDefault();
         setTask(task);
         if (editing) {
-            editTask(id, task)
+            updateById("tasks", id, task)
         } else if (!editing) {
-            addTask(task);
+            addNew("tasks", task);
         }
         setEditing(false);
         e.target.reset();

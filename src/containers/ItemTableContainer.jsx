@@ -6,7 +6,7 @@ import ItemTable from "../components/ItemTable";
 const ItemTableContainer = () => {
 
   return (
-    <section id="tasks" className="d-flex justify-content-center section-container">
+    <section id="tasks" className="d-flex justify-content-center section-container w-100">
       <div className="col-lg-8 col-12 mt-1">
         <div className="card">
           <div className="card-header pt-5 d-flex justify-content-between align-items-end">

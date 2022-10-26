@@ -6,7 +6,7 @@ import { BsToggleOff, BsToggleOn, BsTrashFill, BsPencilSquare } from "react-icon
 
 const Item = ({ item }) => {
 
-    const { completeTask, decompleteTask, removeTask, setId, editing, setEditing } = useFirestore();
+    const { complete, decomplete, deleteById, setId, editing, setEditing } = useFirestore();
 
     // returns a badge depending on task"s priority
     function taskLevelBadge() {
@@ -74,19 +74,19 @@ const Item = ({ item }) => {
                 {
                     item.completed ?
                         <BsToggleOn
-                            onClick={() => decompleteTask(item.id)}
+                            onClick={() => decomplete(item.id)}
                             style={{ color: "var(--primary-color)", marginLeft: "2rem" }}
                         />
                         :
                         <BsToggleOff
-                            onClick={() => completeTask(item.id)}
+                            onClick={() => complete(item.id)}
                             style={{ marginLeft: "2rem" }}
                         />
                 }
             </td>
             <td>
                 <BsPencilSquare onClick={() => openEdit(item.id)} className="me-1 link-gray" />
-                <BsTrashFill onClick={() => removeTask(item.id)} style={{ color: "#CA2E2E" }} />
+                <BsTrashFill onClick={() => deleteById("tasks", item.id)} style={{ color: "#CA2E2E" }} />
             </td>
         </tr>
     );

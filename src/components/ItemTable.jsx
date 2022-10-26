@@ -9,7 +9,7 @@ const ItemTable = () => {
   const { getData, loading, tasks } = useFirestore();
 
   useEffect(() => {
-    getData();
+    getData("tasks");
   }, []);
 
   return (

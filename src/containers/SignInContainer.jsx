@@ -19,7 +19,7 @@ const SignInContainer = () => {
     }
 
     return (
-        <section id="sign-in" className="d-flex justify-content-center section-container">
+        <section id="sign-in" className="d-flex justify-content-center section-container w-100">
             <div className="col-md-4 mt-1">
                 <div className="card">
                     <div className="card-header">
